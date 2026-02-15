@@ -1,0 +1,48 @@
+# YOLO Fine-tuning Config (YOLOv11 - Feb 2026)
+
+# --- Training Settings ---
+epochs: 50
+batch: 32
+imgsz: 256
+device: "0"
+workers: 4
+save_period: 1
+
+# --- Optimizer ---
+optimizer: AdamW
+lr0: 0.00005        # Low LR for fine-tuning
+lrf: 0.05           # Final LR will be 0.0000025 (very conservative)
+weight_decay: 0.00005
+cos_lr: true
+
+# --- Schedule ---
+warmup_epochs: 3
+patience: 15
+
+# --- Reproducibility ---
+seed: 42
+deterministic: true
+
+# --- AUGMENTATIONS (The "No-Movement" Setup) ---
+# 1. Geometry (Force all to 0 to keep images exact)
+scale: 0            # Disables Zooming
+translate: 0        # Disables Sliding
+degrees: 0          # Disables Rotation
+shear: 0            # Disables Skew
+perspective: 0      # Disables 3D Tilt
+flipud: 0           # No upside-down flips
+fliplr: 0           # No left-right flips
+
+# 2. Noise & Occlusion (Force all to 0)
+mosaic: 0           # No grid composition
+mixup: 0            # No image blending
+erasing: 0          # No random black boxes
+copy_paste: 0       # No segmentation copy-paste
+
+# 3. Color (small values to prevent overfitting)
+hsv_h: 0.01         # Hue (Color tint)
+hsv_s: 0.2          # Saturation (Vibrancy)
+hsv_v: 0.1          # Value (Brightness)
+
+verbose: true
+plots: true

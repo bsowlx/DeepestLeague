@@ -1,0 +1,39 @@
+# YOLO Training Config
+
+epochs: 50
+batch: 128
+imgsz: 256
+device: "0"
+workers: 8
+save_period: 1
+
+# Optimizer
+optimizer: AdamW
+lr0: 0.0002
+lrf: 0.05
+weight_decay: 0.0003
+cos_lr: true
+
+# Schedule
+warmup_epochs: 10
+patience: 15
+
+# Reproducibility
+seed: 1
+deterministic: true
+pretrained: false
+
+# Augmentation (minimal for synthetic data)
+hsv_h: 0.01
+hsv_s: 0.2
+hsv_v: 0.1
+mosaic: 0
+mixup: 0
+flipud: 0
+fliplr: 0
+translate: 0
+scale: 0
+erasing: 0
+
+verbose: true
+plots: true

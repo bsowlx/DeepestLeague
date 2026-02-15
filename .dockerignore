@@ -1,0 +1,16 @@
+.git
+.gitignore
+.devcontainer
+__pycache__/
+**/__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.pyc
+*.pyo
+*.pyd
+logs/
+runs/
+results/
+data/trials/

@@ -1,0 +1,24 @@
+name: minimap-detection
+channels:
+  - pytorch
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pytorch=2.5.1
+  - torchvision=0.20.1
+  - torchaudio=2.5.1
+  - numpy=2.1.1
+  - pandas=2.2.3
+  - matplotlib=3.10.0
+  - tqdm=4.67.1
+  - ipykernel=6.29.5
+  - pip=25.0
+  - pip:
+      - opencv-python==4.11.0.86
+      - pillow==11.1.0
+      - albumentations==2.0.5
+      - ultralytics==8.3.115
+      - wandb==0.19.10
+      # - pyautogui==0.9.54
+      # - pynput==1.8.1

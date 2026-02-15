@@ -1,0 +1,23 @@
+{
+  "name": "MinimapDetection (compose)",
+  "dockerComposeFile": [
+    "../compose.yml"
+  ],
+  "service": "minimap",
+  "workspaceFolder": "/app/MinimapDetection",
+  "shutdownAction": "stopCompose",
+  "overrideCommand": true,
+  "remoteUser": "root",
+  "remoteEnv": {
+    "CONDA_DEFAULT_ENV": "minimap-detection",
+    "PATH": "/opt/conda/envs/minimap-detection/bin:/opt/conda/bin:${containerEnv:PATH}"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/conda/envs/minimap-detection/bin/python",
+        "python.terminal.activateEnvironment": false
+      }
+    }
+  }
+}

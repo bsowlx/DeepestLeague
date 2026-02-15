@@ -1,0 +1,13 @@
+services:
+  minimap:
+    build:
+      context: .
+    image: minimap-detection:latest
+    tty: true
+    stdin_open: true
+    shm_size: "32gb"
+    gpus: all
+    working_dir: /app/MinimapDetection
+    volumes:
+      # Mount this repo for fast iteration (overrides the COPY in Dockerfile)
+      - .:/app/MinimapDetection
