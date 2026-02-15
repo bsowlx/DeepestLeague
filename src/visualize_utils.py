@@ -1,31 +1,47 @@
-import requests
-from pathlib import Path
-import yaml
+import os
 import json
- 
+from pathlib import Path
+
+import requests
+import yaml
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-api_path = PROJECT_ROOT / 'src' / 'key' / 'riot_api_key.json'
-with api_path.open() as f :
-    key_data = json.load(f)
 
-api_key = key_data['api_key']
+def _load_api_key() -> str | None:
+    if os.getenv("RIOT_API_KEY"):
+        return os.getenv("RIOT_API_KEY").strip()
 
-header = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
-    "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Accept-Charset": "application/x-www-form-urlencoded; charset=UTF-8",
-    "Origin": "https://developer.riotgames.com",
-    "X-Riot-Token": api_key
-}
+    json_path = PROJECT_ROOT / 'src' / 'key' / 'riot_api_key.json'
+    if json_path.exists():
+        with json_path.open() as fh:
+            data = json.load(fh)
+        return data.get('api_key')
+    return None
+
+
+def _build_headers(api_key: str | None):
+    if not api_key:
+        return None
+    return {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Accept-Charset": "application/x-www-form-urlencoded; charset=UTF-8",
+        "Origin": "https://developer.riotgames.com",
+        "X-Riot-Token": api_key,
+    }
 
 def get_game_info_by_match_id(match_id) :
     match_data = []
     if match_id is not None :
         url = f"https://asia.api.riotgames.com/lol/match/v5/matches/{match_id}"
+        headers = _build_headers(_load_api_key())
+        if headers is None:
+            print("[warning] Riot API key not configured; skipping match fetch.")
+            return match_data
 
-        rq = requests.get(url, headers= header)
+        rq = requests.get(url, headers= headers)
         if rq.status_code == 200 :
             match_data = rq.json()
 
