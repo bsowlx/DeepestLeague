@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](#license)
 
 <p align="center">
-  <img src="assets/videos/preview.gif" alt="Minimap pipeline preview" width="480" />
+  <img src="assets/videos/preview.gif" alt="Minimap pipeline preview" width="240" />
 </p>
 
 End-to-end League of Legends minimap detection automation: generate synthetic datasets, train YOLO/RT-DETR models, and run a viewport-aware inference pipeline on replays or images.
