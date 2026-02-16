@@ -27,7 +27,7 @@ import cv2
 import albumentations as A
 
 
-DEFAULT_WORKERS = max(1, min(40, os.cpu_count() or 1))
+DEFAULT_WORKERS = max(1, min(8, os.cpu_count() or 1))
 
 
 # ---------- Paths ----------
