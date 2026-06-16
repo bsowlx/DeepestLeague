@@ -87,9 +87,9 @@ docker compose exec minimap bash
 - Replay dataset: https://huggingface.co/datasets/lusung33/AAAI26_LoL_MinimapDetection_Dataset
 - Best Models: https://huggingface.co/boboyes/leagueoflegends-minimap-detection
 
-## �📊 Model Results
+## �📊 Model Results — Including full occlusions, which are impossible to detect without additional metadata(e.g. prev frames, death logs) which significantly degrade the numbers.
 
-**YOLOv11 Synthetic (replay test)**
+**YOLOv11 Synthetic (real replay test)**
 
 | Model | P | R | mAP50 | mAP50-95 | Inf (ms) |
 |---|---:|---:|---:|---:|---:|
@@ -99,7 +99,7 @@ docker compose exec minimap bash
 | yolo11l | **0.936** | 0.770 | 0.827 | 0.646 | 3.8 |
 | yolo11x | **0.936** | **0.787** | **0.839** | **0.649** | 5.0 |
 
-**YOLOv11 Finetune (replay)**
+**YOLOv11 Finetune (real replay data)**
 
 | Model | P | R | mAP50 | mAP50-95 | Inf (ms) |
 |---|---:|---:|---:|---:|---:|
