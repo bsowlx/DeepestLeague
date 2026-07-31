@@ -16,8 +16,8 @@ End-to-end League of Legends minimap detection automation: generate synthetic da
 - Evaluation utilities for YOLO predictions and viewport detection (@scripts/eval/yolo_eval.py, @scripts/eval/eval_viewport_detection.py).
 - Docker + Conda paths for quick setup on CPU or GPU.
 
-## 🧩 Champion Coverage (Feb 2026)
-- The project supports all 172 League of Legends champions as of February 2026 (ending with Zaahen).
+## 🧩 Champion Coverage (July 2026)
+- The project supports all 172 League of Legends champions as of July 2026 (ending with Locke).
 - Trained model coverage is currently 170 champions, excluding Zaahen and Yunara.
 
 ## 📂 Project Structure
