@@ -18,7 +18,7 @@ End-to-end League of Legends minimap detection automation: generate synthetic da
 
 ## 🧩 Champion Coverage (July 2026)
 - The project supports all 173 League of Legends champions as of July 2026 (ending with Locke).
-- Trained model coverage is currently 170 champions, excluding Zaahen and Yunara.
+- Trained model coverage is currently 170 champions, excluding Zaahen, Yunara, and Locke.
 
 ## 📂 Project Structure
 ```text
